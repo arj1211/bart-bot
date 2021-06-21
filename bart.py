@@ -1,5 +1,8 @@
 import discord
 import os
+from dotenv import load_dotenv as ldv
+
+ldv()
 
 client = discord.Client()
 
@@ -14,6 +17,10 @@ async def on_message(message):
 
   if message.content.startswith('$hello'):
     await message.channel.send('Hello!')
+
+  if message.content.startswith('$echo'):
+    await message.delete()
+    await message.channel.send(message.content[len('$echo')+1:])
   
   if any(em in message.content for em in ['😈','dewol','hehe']):
     await message.add_reaction('😈')
@@ -27,4 +34,4 @@ async def on_message(message):
 
   print(message.content)
 
-client.run(os.environ['TOKEN'])
+client.run(os.environ['BART_TOKEN'])
