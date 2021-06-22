@@ -35,6 +35,9 @@ async def on_message(message):
   if any(em in message.content for em in ['🚀','rocket']):
     await message.add_reaction('🚀')
 
+  if any(em in message.content for em in ['🧢','cap']):
+    await message.add_reaction('🧢')
+
   print(message.content)
 
 client.run(os.environ['BART_TOKEN'])
