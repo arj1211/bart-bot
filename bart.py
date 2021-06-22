@@ -22,7 +22,7 @@ async def on_message(message):
     await message.delete()
     await message.channel.send(message.content[len('$echo')+1:])
   
-  if any(em in message.content for em in ['😈','dewol','hehe']):
+  if any(dem in message.content for dem in ['😈','dewol','hehe']):
     await message.add_reaction('😈')
 
   if any(sad_indicator in message.content for sad_indicator in ['<:sadgeraz:792469326304509973>','sad','sadge','rip','F']):
@@ -31,6 +31,9 @@ async def on_message(message):
   if message.role_mentions:
     rms = ' ,   '.join(list(map(lambda R: R.name, message.role_mentions)))
     await message.channel.send(f"{'Role' if len(message.role_mentions)<2 else 'Roles'}   {rms}   {'was' if len(message.role_mentions)<2 else 'were'} mentioned.")
+
+  if any(em in message.content for em in ['🚀','rocket']):
+    await message.add_reaction('🚀')
 
   print(message.content)
 
