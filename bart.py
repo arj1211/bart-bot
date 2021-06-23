@@ -38,6 +38,9 @@ async def on_message(message):
   if any(em in message.content for em in ['🧢','cap']):
     await message.add_reaction('🧢')
 
-  print(message.content)
+@client.event
+async def on_voice_state_update(member, before, after):
+  # count num of users in all voice channels --> if raises to 5, send a msg, if lowers to 0, send a msg
+  pass
 
 client.run(os.environ['BART_TOKEN'])
